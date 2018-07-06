@@ -1,37 +1,48 @@
 package com.thebaileybrew.angry_nerds_demo_recycler;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-
-    public ArrayList<AngryNerd> NerdsDatabase = new ArrayList<>();
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    public ArrayList<AngryNerd> NerdDatabase;
     RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.angry_nerds_selection);
 
-        //Create your ArrayList data
-        NerdsDatabase.add(new AngryNerd("Matthew", "News App Pt. 1", 1));
-        NerdsDatabase.add(new AngryNerd("Olivia", "Tour Guide", 2));
-        NerdsDatabase.add(new AngryNerd("Chris", "News App Pt. 1", 3));
+        Button fragmentButton = findViewById(R.id.recycler_with_fragments);
+        Button activityButton = findViewById(R.id.recycler_with_activities);
+        fragmentButton.setOnClickListener(this);
+        activityButton.setOnClickListener(this);
+    }
 
-        //Create a standard LinearLayout Manager to control how the recycler works
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        //Create an adapter based on the custom class you created
-        AngryNerdAdapter angryAdapter = new AngryNerdAdapter(this,NerdsDatabase);
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
 
-        //Find your Recycler and set your layoutManger and adapter to it
-        recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(angryAdapter);
-
+        switch(v.getId()) {
+            case R.id.recycler_with_fragments:
+                Intent openFragments = new Intent(this,RecyclerOnFragments.class);
+                startActivity(openFragments);
+                break;
+            case R.id.recycler_with_activities:
+                Intent openActivity = new Intent(this,RecyclerOnActivity.class);
+                startActivity(openActivity);
+                break;
+        }
 
 
     }

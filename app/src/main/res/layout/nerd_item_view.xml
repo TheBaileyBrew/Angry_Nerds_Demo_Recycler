@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
     xmlns:tools="http://schemas.android.com/tools">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,7 +16,9 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:textSize="36sp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:textSize="48sp"
             android:textColor="@color/colorAccent"
             tools:text="1"
             />
@@ -23,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/nerd_id"
             android:layout_alignParentTop="true"
-            android:textSize="28sp"
+            android:textSize="22sp"
             android:textColor="@color/colorPrimaryDark"
             tools:text="NAME GOES HERE"/>
         <TextView
@@ -33,12 +38,10 @@
             android:layout_below="@id/nerd_name"
             android:layout_toRightOf="@id/nerd_id"
             android:layout_marginTop="6dp"
-            android:textSize="28sp"
+            android:textSize="20sp"
             android:textStyle="italic|bold"
             android:textColor="@color/colorPrimary"
             tools:text="CURRENT PROJECT"/>
 
     </RelativeLayout>
-
-
 </android.support.v7.widget.CardView>
